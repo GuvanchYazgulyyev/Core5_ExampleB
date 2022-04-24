@@ -1,0 +1,150 @@
+﻿@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <title>Weblog a Blogging Category Bootstrap responsive WebTemplate | Blog3 :: w3layouts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="blog" />
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link href="~/web/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="~/web/css/single.css">
+    <link href="~/web/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="~/web/css/fontawesome-all.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
+          rel="stylesheet">
+</head>
+
+<body>
+    <!--Header-->
+
+
+
+    <header>
+        <div class="top-bar_sub_w3layouts container-fluid">
+            <div class="row">
+                <div class="col-md-4 logo text-left">
+                    <a class="navbar-brand" href="/">
+                        <i class="fab fa-linode"></i> webigem
+                    </a>
+                </div>
+                @await Html.PartialAsync("/Views/Blog/Partials/_TopHeaderSosialPartial.cshtml")
+            </div>
+        </div>
+
+        <div class="header_top" id="home">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button class="navbar-toggler navbar-toggler-right mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                Ana Sayfa
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="About">Hakkımızda</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"asp-action="Index" asp-controller="Blog">Bloglar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="SendMessage" asp-controller="About">İletişim</a>
+                        </li>
+
+                    </ul>
+                    <form action="#" method="post" class="form-inline my-2 my-lg-0 header-search">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Ara..." name="Search" required="">
+                        <button class="btn btn1 my-2 my-sm-0" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+
+
+
+                </div>
+            </nav>
+
+        </div>
+    </header>
+
+
+
+    <!--//header-->
+    <!--/banner-->
+    <div class="banner-inner">
+    </div>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">Ana Sayfa</a>
+        </li>
+        <li class="breadcrumb-item active">Blog3</li>
+    </ol>
+    <!--//banner-->
+    <!--/main-->
+    @RenderBody()
+    <!--//main-->
+    <!--footer-->
+    @await Html.PartialAsync("/Views/Blog/Partials/_FooterPartial.cshtml")
+
+    <!---->
+    <!-- js -->
+    <script src="~/web/js/jquery-2.2.3.min.js"></script>
+    <!-- //js -->
+    <!--/ start-smoth-scrolling -->
+    <script src="~/web/js/move-top.js"></script>
+    <script src="~/web/js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 900);
+            });
+        });
+    </script>
+    <!--// end-smoth-scrolling -->
+
+    <script>
+        $(document).ready(function () {
+
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <a href="#home" class="scroll" id="toTop" style="display: block;">
+        <span id="toTopHover" style="opacity: 1;"> </span>
+    </a>
+
+    <script src="~/web/js/bootstrap.js"></script>
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<EntityLayer.Concrete.About>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_VitrinLayout.cshtml";
+}
+
+
+
+<body>
+
+    <section class="main-content-w3layouts-agileits">
+        <div class="container">
+            <h3 class="tittle">Hakkımızda</h3>
+            <div class="row inner-sec">
+                <!--left-->
+                @foreach (var x in Model)
+                {
+                    <div class="col-lg-8 left-blog-info-w3layouts-agileits text-left">
+                        <div class="blog-grid-top">
+
+                            <div class="blog_info_left_grid">
+                                <a href="single.html">
+                                    <img src="@x.AboutImage" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                            <p>
+                                @Html.Raw(x.AboutDetails);
+                            </p>
+                            <a asp-action="Index" asp-controller="Blog" class="btn btn-primary read-m">Makalelermize Göz Atın</a>
+                        </div>
+
+                    </div>
+                }
+
+                <!--//left-->
+                <!--right-->
+                <aside class="col-lg-4 agileits-w3ls-right-blog-con text-right">
+                    <div class="right-blog-info text-left">
+
+                        <!--Social Media-->
+                        @await Html.PartialAsync("~/Views/About/SocialMediaAbout.cshtml")
+                        <!--Social Media-->
+
+
+                        <div class="tech-btm">
+                            <h4>Güncel Makaleler</h4>
+
+                            <!--Own Writer Posts-->
+                            @await Component.InvokeAsync("WriterPost")
+                            <!--Own Writer Posts-->
+                        </div>
+                    </div>
+
+                </aside>
+                <!--//right-->
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+
+

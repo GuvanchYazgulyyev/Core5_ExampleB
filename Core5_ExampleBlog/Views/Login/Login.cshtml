@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_VitrinLayout.cshtml";
+}
+
+<!--/main-->
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+        <h3 class="tittle">Giriş Yap</h3>
+        <div class="row inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+                <form method="post">
+                    <div class="form-group">
+                        @*     <div asp-validation-summary="ModelOnly"></div>*@
+                        <label for="exampleInputEmail1 mb-2">E Posta Adresiniz!</label>
+                        <input type="email" class="form-control" name="WriterMail" aria-describedby="emailHelp" placeholder="E Posta Adresiniz...">
+                        @*  <span asp-validation-for="WriterMail"></span>*@
+                        <small id="emailHelp" class="form-text text-muted">Bilgileriniz Bizde Saklı Kalacak!!!</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1 mb-2">Şifreniz!</label>
+                        <input type="password" class="form-control" name="WriterPassword" placeholder="Şifreniz...">
+                        @* <span asp-validation-for="WriterPassword"></span>*@
+                    </div>
+                    <div class="form-check mb-2">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Beni Hatırla</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit mb-4">Giriş Yap</button>
+                    <p><a asp-action="Index" asp-controller="Register"> Hesabın Yok mu?</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!--//main-->

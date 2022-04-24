@@ -1,0 +1,62 @@
+﻿@model EntityLayer.Concrete.Writer
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_VitrinLayout.cshtml";
+}
+
+<!--Sweet Aler-->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!--Sweet Aler-->
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<!--/main-->
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+        <h3 class="tittle">Hesap Oluştur</h3>
+        <div class="inner-sec">
+            <div class="login p-5 bg-light mx-auto mw-100">
+                <form method="post" asp-action="Index" asp-controller="Register" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div asp-validation-summary="ModelOnly"></div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">Adınız Soyadınız!</label>
+                            <input type="text" class="form-control" asp-for="WriterName" id="validationDefault01" name="WriterName" placeholder="Ad Soyad Giriniz!">
+                            <span asp-validation-for="WriterName" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom02">E Posta Adres!</label>
+                            <input type="email" class="form-control" id="validationDefault02" asp-for="WriterMail" name="WriterMail" placeholder="E Posta Adresinizi Giriniz!" required="">
+                            <span asp-validation-for="WriterMail" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword1 mb-2">Şifreniz!</label>
+                            <input type="password" name="WriterPassword" asp-for="WriterPassword" class="form-control" id="password1" placeholder="Şifrenizi Giriniz!" required="">
+                            <span asp-validation-for="WriterPassword" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputPassword2 mb-2">Profiliniz!</label>
+                            <input type="text" name="WriterImage" asp-for="WriterImage" class="form-control" placeholder="" required="">
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary submit mb-4">Kayıt Ol</button>
+                    <p>
+                        <a href="#" id="alert">Tüm Şartları Kabul Ediyorum.</a>
+                    </p>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#alert').click(function(){
+            swal("SİTE KULLANIM ŞARTLARI", "Lütfen sitemizi kullanmadan evvel bu ‘site kullanım şartları’nı dikkatlice okuyunuz. Bu alışveriş sitesini kullanan ve alışveriş yapan müşterilerimiz aşağıdaki şartları kabul etmiş varsayılmaktadır: Sitemizdeki web sayfaları ve ona bağlı tüm sayfalar (‘site’) ……………………… adresindeki ……………………………….firmasının (Firma) malıdır ve onun tarafından işletilir. Sizler (‘Kullanıcı’) sitede sunulan tüm hizmetleri kullanırken aşağıdaki şartlara tabi olduğunuzu, sitedeki hizmetten yararlanmakla ve kullanmaya devam etmekle; Bağlı olduğunuz yasalara göre sözleşme imzalama hakkına, yetkisine ve hukuki ehliyetine sahip ve 18 yaşın üzerinde olduğunuzu, bu sözleşmeyi okuduğunuzu, anladığınızı ve sözleşmede yazan şartlarla bağlı olduğunuzu kabul etmiş sayılırsınız. ");
+        });
+    </script>
+</section>
+<!--//main-->s
+
