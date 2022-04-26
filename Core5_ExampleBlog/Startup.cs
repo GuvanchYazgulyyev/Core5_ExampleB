@@ -28,7 +28,7 @@ namespace Core5_ExampleBlog
         {
             services.AddControllersWithViews();
 
-            // Sessin için
+            // Sessin için Claimslerle iþlem yaptýgýmýz için gerek yok
             services.AddSession();
 
             // Burasý Sisteme Authentike Ýþleminin yapýldýgý yer
@@ -75,6 +75,8 @@ namespace Core5_ExampleBlog
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            // Giriþ Yapabilmek Ýçin
+            app.UseAuthentication();
 
             // Sessionu Kullan
             app.UseSession();

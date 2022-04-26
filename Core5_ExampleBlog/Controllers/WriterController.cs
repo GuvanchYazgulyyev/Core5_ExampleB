@@ -11,5 +11,16 @@ namespace Core5_ExampleBlog.Controllers
         {
             return View();
         }
+
+        public IActionResult WriterProfil()
+        {
+            return View();
+        }
+
+
+        public IActionResult WriterMail()
+        {
+            return View();
+        }
     }
 }

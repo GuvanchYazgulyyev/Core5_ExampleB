@@ -58,6 +58,12 @@ namespace BusinessLayer.Concrete
             return _blogDal.GetListAll(k => k.WriterID == id);
         }
 
+        // Sadece 3 blogu getirir Footer Kısmı için
+        public List<Blog> GetList3Blog()
+        {
+            return _blogDal.GetListAll().Take(3).ToList();
+        }
+
        
     }
 }
