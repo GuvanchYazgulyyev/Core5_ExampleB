@@ -18,6 +18,13 @@ namespace DataAccessLayer.Repositories
             c.SaveChanges();
 
         }
+        public void Passive(T t)
+        {
+            using var c = new Context();
+            c.Remove(t);
+            c.SaveChanges();
+
+        }
 
         public T GetByID(int id)
         {

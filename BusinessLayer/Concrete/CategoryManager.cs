@@ -17,29 +17,64 @@ namespace BusinessLayer.Concrete
         {
             _categoryDal = categoryDal;
         }
-        public void CategoryAdd(Category category)
+
+        public void Passive(Category t)
         {
-            _categoryDal.Insert(category);
+            throw new NotImplementedException();
         }
 
-        public void CategoryDelete(Category category)
+        //public void CategoryAdd(Category category)
+        //{
+        //    _categoryDal.Insert(category);
+        //}
+
+        //public void CategoryDelete(Category category)
+        //{
+        //    _categoryDal.Delete(category);
+        //}
+
+        //public void CategoryUpdate(Category category)
+        //{
+        //    _categoryDal.Update(category);
+        //}
+
+        //public Category GetById(int id)
+        //{
+        //    return _categoryDal.GetByID(id);
+        //}
+
+        //public List<Category> GetList()
+        //{
+        //    return _categoryDal.GetListAll();
+        //}
+
+
+
+        // New Generic Service Added
+
+        public void TAdd(Category t)
         {
-            _categoryDal.Delete(category);
+            _categoryDal.Insert(t);
         }
 
-        public void CategoryUpdate(Category category)
+        public void TDelete(Category t)
         {
-            _categoryDal.Update(category);
+            _categoryDal.Delete(t);
         }
 
-        public Category GetById(int id)
+        public Category TGetById(int id)
         {
             return _categoryDal.GetByID(id);
         }
 
-        public List<Category> GetList()
+        public List<Category> TGetList()
         {
             return _categoryDal.GetListAll();
+        }
+
+        public void TUpdate(Category t)
+        {
+            _categoryDal.Update(t);
         }
     }
 }

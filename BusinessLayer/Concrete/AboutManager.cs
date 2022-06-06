@@ -18,9 +18,36 @@ namespace BusinessLayer.Concrete
         {
             _aboutDal = aboutDal;
         }
-        public List<About> GetList()
+
+        public void Passive(About t)
+        {
+            throw new NotImplementedException();
+        }
+
+        // New Added From Business Layer
+        public void TAdd(About t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TDelete(About t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public About TGetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<About> TGetList()
         {
             return _aboutDal.GetListAll();
+        }
+
+        public void TUpdate(About t)
+        {
+            throw new NotImplementedException();
         }
     }
 }

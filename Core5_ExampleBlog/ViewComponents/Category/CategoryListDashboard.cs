@@ -4,13 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Core5_ExampleBlog.ViewComponents.Category
 {
-    public class CategoryListComponent:ViewComponent
+    public class CategoryListDashboard: ViewComponent
     {
-        CategoryManager dr = new CategoryManager(new EfCategoryRepository());
+        CategoryManager category = new CategoryManager(new EfCategoryRepository());
 
         public IViewComponentResult Invoke()
         {
-            var value = dr.TGetList();
+            var value = category.TGetList();
             return View(value);
         }
     }

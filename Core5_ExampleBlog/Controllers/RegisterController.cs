@@ -29,7 +29,7 @@ namespace Core5_ExampleBlog.Controllers
             if (result.IsValid)
             {
                 w.WriterStatus = true;
-                dr.WriterAdd(w);
+                dr.TAdd(w);
                 return RedirectToAction("Index", "Blog");
             }
             else

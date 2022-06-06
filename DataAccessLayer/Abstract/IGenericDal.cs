@@ -13,6 +13,11 @@ namespace DataAccessLayer.Abstract
         void Insert(T t);
         // Delete
         void Delete(T t);
+
+          // Passive
+        void Passive(T t);
+
+
         // Update
         void Update(T t);
 

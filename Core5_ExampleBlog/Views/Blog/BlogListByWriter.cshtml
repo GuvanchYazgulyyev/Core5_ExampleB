@@ -1,0 +1,70 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+
+@{
+    ViewData["Title"] = "BlogListByWriter";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<h1>BlogListByWriter</h1>
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Bordered table</h4>
+            <p class="card-description">
+                Add class <code>.table-bordered</code>
+            </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> # </th>
+                        <th> Blog Başlığı </th>
+                        <th> Oluşturma Tarihi </th>
+                        <th> Kategori </th>
+                        <th> Durum </th>
+                        <th> Sil </th>
+                        <th> Detay(Düzenle) </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td> @x.BlogID </td>
+                            <td> @x.BlogTitle </td>
+                            @*    <td>
+                                <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                </td>*@
+                            <td> @(((DateTime)x.BlogCreateDate).ToString("dd MMM ddd yyy HH:mm"))</td>
+                            <td> @x.Category.CategoryName</td>
+                            @if (x.BlogStatus == false)
+                            {
+                                <td>
+                                    <label class="badge badge-danger">
+                                        Pasif
+                                    </label>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <label class="badge badge-success">
+                                        Aktif
+                                    </label>
+
+                                </td>
+                            }
+                            <td><a asp-action="DeleteBlog" asp-controller="Blog" asp-route-id="@x.BlogID" class="btn btn-gradient-danger btn-rounded">Sil</a> </td>
+                            <td><a asp-action="EditBlog" asp-controller="Blog" asp-route-id="@x.BlogID" class="btn btn-gradient-info btn-rounded">Güncelle</a> </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            <a asp-action="AddBlogAuthet" asp-controller="Blog" class="btn btn-gradient-success btn-rounded">Yeni Blog Ekle</a>
+        </div>
+    </div>
+</div>

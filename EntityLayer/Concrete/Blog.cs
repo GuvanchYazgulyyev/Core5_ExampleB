@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace EntityLayer.Concrete
 {
@@ -12,11 +13,13 @@ namespace EntityLayer.Concrete
         [Key]
         public int BlogID { get; set; }
         public string BlogTitle { get; set; }
+        [AllowHtml]
         public string BlogContent { get; set; }
         public string BlogThumbnailImage { get; set; }
         public string BlogImage { get; set; }
         public DateTime BlogCreateDate { get; set; }
         public bool BlogStatus { get; set; }
+        public bool BlogDelete { get; set; }
 
         // İlişki
 

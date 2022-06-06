@@ -17,7 +17,7 @@ namespace Core5_ExampleBlog.Controllers
 
         public IActionResult Index()
         {
-            var value = ab.GetList();
+            var value = ab.TGetList();
             return View(value);
         }
 

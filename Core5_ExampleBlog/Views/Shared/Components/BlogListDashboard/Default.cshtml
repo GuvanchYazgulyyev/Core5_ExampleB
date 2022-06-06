@@ -1,0 +1,42 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Blog>
+
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Son Bloglar</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Resim </th>
+                                <th> Blog Başlığı </th>
+                                <th> Kategori </th>
+                                <th> Ratih </th>
+                                <th> Detay </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var x in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@x.BlogImage" class="mr-2" alt="resim">
+                                    </td>
+                                    <td>
+                                        @x.BlogTitle
+                                    </td>
+                                    <td>
+                                        <label class="badge badge-gradient-success">@x.Category.CategoryName</label>
+                                    </td>
+                                    <td> @(((DateTime)x.BlogCreateDate).ToString("dd-MMM-yyyy")) </td>
+                                    <td>  <a asp-action="BlogDetails" asp-controller="Blog" class="btn btn-gradient-primary mr-2" asp-route-id="@x.BlogID">Detay</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -22,5 +22,25 @@ namespace Core5_ExampleBlog.Controllers
         {
             return View();
         }
+
+        // Writer Nav Bar Top Parial
+        public PartialViewResult WriterNavBarPartial()
+        {
+            return PartialView();
+        }
+
+         // Writer Footer Parial
+        public PartialViewResult WriterFooterPartial()
+        {
+            return PartialView();
+        }
+
+        public IActionResult Test()
+        {
+            return View();
+        }
+
+
+
     }
 }
