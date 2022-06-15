@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace EntityLayer.Concrete
 {
@@ -12,6 +13,7 @@ namespace EntityLayer.Concrete
         [Key]
         public int WriterID { get; set; }
         public string WriterName { get; set; }
+        [AllowHtml]
         public string WriterAbout { get; set; }
         public string WriterImage { get; set; }
         public string WriterMail { get; set; }

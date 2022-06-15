@@ -23,5 +23,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<Writer> Writers { get; set; }
         public DbSet<BlogRayting> BlogRaytings { get; set; }
         public DbSet<SubscribeMail> SubscribeMails { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
     }
 }

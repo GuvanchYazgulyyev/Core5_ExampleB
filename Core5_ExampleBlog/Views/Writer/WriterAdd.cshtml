@@ -1,0 +1,81 @@
+﻿@model Core5_ExampleBlog.Models.AddProfileImage
+@{
+    ViewData["Title"] = "WriterAdd";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div>
+            <span class="alert">@ViewBag.msg</span>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Yazar Profil Ekleme</h4>
+            <form class="forms-sample" method="post" asp-action="WriterAdd" enctype="multipart/form-data">
+                <div asp-validation-summary=ModelOnly></div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Yazar Ad Soyadı!</label>
+                    <input type="text" class="form-control" asp-for="WriterName" placeholder="Yazar Ad Soyadı">
+                    <span asp-validation-for="WriterName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Yazar Görseli</label>
+                    <input type="file" class="form-control" name="WriterImage" accept=".jpg,.JPG,.PNG,.png,.jpeg,.JPEG" placeholder="Yazar Görseli">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleTextarea1">Yazar Hakkında</label>
+                    <textarea class="form-control" asp-for="WriterAbout" id="summernote" rows="4"></textarea>
+                    <span asp-validation-for="WriterAbout" class="text-danger"></span>
+                </div>
+
+
+
+                <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+                <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+                <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+
+                <script>
+                    $('#summernote').summernote({
+                        placeholder: 'Blog İçeriginiz!!!',
+                        tabsize: 2,
+                        height: 200,
+                        toolbar: [
+                            ['style', ['style']],
+                            ['font', ['bold', 'underline', 'clear']],
+                            ['color', ['color']],
+                            ['para', ['ul', 'ol', 'paragraph']],
+                            ['table', ['table']],
+                            ['insert', ['link', 'picture', 'video']],
+                            ['view', ['fullscreen', 'codeview', 'help']]
+                        ]
+                    });
+                </script>
+
+                <div class="form-group">
+                    <label for="exampleInputName1">Yazar E Postası!</label>
+                    <input type="email" class="form-control" asp-for="WriterMail" placeholder="Yazar E Postası">
+                    <span asp-validation-for="WriterMail" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputName1">Yazar Şifresi!</label>
+                    <input type="password" class="form-control" asp-for="WriterPassword">
+                    <input type="hidden" class="form-control" asp-for="WriterID">
+                    <span asp-validation-for="WriterPassword" class="text-danger"></span>
+                </div>
+
+
+
+
+                <button type="submit" class="btn btn-gradient-info mr-2">Ekle</button>
+                <button class="btn btn-light">İptal Et</button>
+            </form>
+        </div>
+    </div>
+</div>
+
