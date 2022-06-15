@@ -40,7 +40,7 @@ namespace BusinessLayer.Concrete
 
         public List<Notification> TGetList()
         {
-            throw new NotImplementedException();
+            return _notification.GetListAll();
         }
 
         public void TUpdate(Notification t)

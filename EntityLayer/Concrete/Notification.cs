@@ -15,6 +15,7 @@ namespace EntityLayer.Concrete
         public string TypeSymbol { get; set; }
         public string Details { get; set; }
         public DateTime NotificationDate { get; set; }
+        public string NotificationColor { get; set; }
         public bool Status { get; set; }
     }
 }
