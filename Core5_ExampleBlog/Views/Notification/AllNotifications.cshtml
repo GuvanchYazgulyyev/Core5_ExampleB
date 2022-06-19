@@ -1,0 +1,64 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Notification>
+@{
+    ViewData["Title"] = "AllNotifications";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<h1>Bloğlarım</h1>
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Bordered table</h4>
+            <p class="card-description">
+                Add class <code>.table-bordered</code>
+            </p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> # </th>
+                        <th> Bildirim Başlığı </th>
+                        <th> Oluşturma Tarihi </th>
+                        <th> Detay </th>
+                        <th> Durum </th>
+                        <th> Sil </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td> @x.NotificationId </td>
+                            <td> @x.Type </td>
+                            @*    <td>
+                        <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        </td>*@
+                            <td> @(((DateTime)x.NotificationDate).ToString("dd MMM ddd yyy HH:mm"))</td>
+                            <td>@x.Details</td>
+                            @if (x.Status == false)
+                            {
+                                <td>
+                                    <label class="badge badge-danger"> Pasif</label>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <label class="badge badge-success">
+                                        Aktif
+                                    </label>
+                                </td>
+                            }
+                            <td><a asp-action="DeleteBlog" asp-controller="Notification" asp-route-id="@x.NotificationId" class="btn btn-gradient-danger btn-rounded">Pasif</a> </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            <a asp-action="AddBlogAuthet" asp-controller="Blog" class="btn btn-gradient-success btn-rounded">Yeni Blog Ekle</a>
+        </div>
+    </div>
+</div>
