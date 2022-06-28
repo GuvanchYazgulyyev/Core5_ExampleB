@@ -34,41 +34,12 @@ namespace Core5_ExampleBlog.Controllers
                 var userIdentity = new ClaimsIdentity(claims, "a");
                 ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
                 await HttpContext.SignInAsync(principal);
-                return RedirectToAction("Index", "Writer");
+                return RedirectToAction("Index", "Dashboard");
             }
             else
             {
                 return View();
             }
-
         }
-
-
-
-
-
-        //public IActionResult Exam()
-        //{
-        //    WriterValidator validationRules = new WriterValidator();
-        //    ValidationResult result = validationRules.Validate(w);
-        //    Context dr = new Context();
-        //    var value = dr.Writers.FirstOrDefault(k => k.WriterMail == w.WriterMail
-        //    && k.WriterPassword == w.WriterPassword);
-        //    if (value != null && result.IsValid)
-        //    {
-        //        HttpContext.Session.SetString("username", w.WriterMail);
-        //        return RedirectToAction("Index", "Writer");
-        //    }
-        //    else
-        //    {
-        //        foreach (var item in result.Errors)
-        //        {
-        //            ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
-        //        }
-        //    }
-        //    return View();
-        //}
-
-
     }
 }

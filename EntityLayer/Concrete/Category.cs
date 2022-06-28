@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace EntityLayer.Concrete
 {
@@ -14,6 +15,7 @@ namespace EntityLayer.Concrete
         [Key]
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
+        [AllowHtml]
         public string CategoryDescription { get; set; }
         public bool CategoryStatus { get; set; }
 

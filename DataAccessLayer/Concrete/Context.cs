@@ -15,6 +15,32 @@ namespace DataAccessLayer.Concrete
             optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=Core5Exam;Integrated Security=True;");
         }
 
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //ReceiverMessage
+            //SenderMessage
+
+            // Gönderici İçin
+            modelBuilder.Entity<AllMessage>()
+                .HasOne(k => k.SenderUser)
+                .WithMany(u => u.SenderMessage)
+                .HasForeignKey(z => z.SenderId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+
+            // Alıcı İçin
+            modelBuilder.Entity<AllMessage>()
+                .HasOne(x => x.ReceiverUser)
+                .WithMany(g => g.ReceiverMessage)
+                .HasForeignKey(e => e.ReceiverId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+                //ReceiverUser
+                //SenderUser
+
+        }
+
         public DbSet<About> Abouts { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -25,5 +51,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<SubscribeMail> SubscribeMails { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<AllMessage> AllMessages { get; set; }
+        public DbSet<Admin> Admins { get; set; }
     }
 }

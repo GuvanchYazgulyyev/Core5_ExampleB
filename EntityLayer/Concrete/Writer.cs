@@ -22,5 +22,8 @@ namespace EntityLayer.Concrete
 
         // Bir Yazarın Birden fazla Blogu Olabilir
         public List<Blog> Blogs { get; set; }
+
+        public virtual ICollection<AllMessage> SenderMessage { get; set; }
+        public virtual ICollection<AllMessage> ReceiverMessage { get; set; }
     }
 }

@@ -1,0 +1,32 @@
+﻿@model EntityLayer.Concrete.AllMessage
+@{
+    ViewData["Title"] = "MessageDetail";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<h1>Gelen Mesajlar</h1>
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Yebi Blog Ekleyin</h4>
+            <p class="card-description"> Yeni Blog </p>
+            <form class="forms-sample" method="post" asp-action="MessageDetail" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label for="exampleInputName1">Mesaj Başlığı!</label>
+                    <input type="text" class="form-control" readonly asp-for="Subject" name="Subject" placeholder="Name">
+                    <input type="hidden" class="form-control" asp-for="MessageId" name="Subject" placeholder="Name">
+
+                </div>
+       
+
+                <div class="form-group">
+                    <label for="exampleTextarea1">İçerik</label>
+                    <textarea class="form-control" readonly name="MessageDetails"asp-for="MessageDetails" id="summernote" rows="8"></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

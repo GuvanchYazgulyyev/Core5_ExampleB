@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
@@ -15,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace Core5_ExampleBlog.Controllers
 {
-    [AllowAnonymous]
+   // [AllowAnonymous]
     public class BlogController : Controller
     {
         BlogManager blg = new BlogManager(new EfBlogRepository());
@@ -39,7 +40,11 @@ namespace Core5_ExampleBlog.Controllers
         //  Just List Own Writer Blogs
         public IActionResult BlogListByWriter()
         {
-            var values = blg.GetListWidthCategoryByWriter(2);
+            Context context = new Context();
+            var mail = User.Identity.Name;
+            var Id = context.Writers.Where(k => k.WriterMail == mail)
+                .Select(l => l.WriterID).FirstOrDefault();
+            var values = blg.GetListWidthCategoryByWriter(Id);
             return View(values);
         }
 
@@ -63,13 +68,18 @@ namespace Core5_ExampleBlog.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddBlogAuthet(Blog b, IFormFile userPicture)
         {
+            Context context = new Context();
+            var mail = User.Identity.Name;
+            var Id = context.Writers.Where(k => k.WriterMail == mail)
+                .Select(l => l.WriterID).FirstOrDefault();
+
             AddBlogValidation validation = new AddBlogValidation();
             ValidationResult validationResult = validation.Validate(b);
             if (validationResult.IsValid)
             {
                 b.BlogStatus = true;
                 b.BlogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                b.WriterID = 2;
+                b.WriterID = Id;
 
                 // Resim Kaydetme----------------------------------------------
                 if (userPicture.Length > 0)
@@ -128,6 +138,9 @@ namespace Core5_ExampleBlog.Controllers
         [HttpPost]
         public IActionResult EditBlog(Blog b, IFormFile userPicture, IFormFile userPicture2)
         {
+
+          
+
             // Resim Kaydetme----------------------------------------------
             if (userPicture != null && userPicture.Length > 0)
             {
@@ -158,8 +171,12 @@ namespace Core5_ExampleBlog.Controllers
                 }
             }
 
+            Context context = new Context();
+            var mail = User.Identity.Name;
+            var Id = context.Writers.Where(k => k.WriterMail == mail)
+                .Select(l => l.WriterID).FirstOrDefault();
 
-            b.WriterID = 2;
+            b.WriterID = Id;
             b.BlogCreateDate = DateTime.Parse(DateTime.Now.ToLongDateString());
             b.BlogStatus = true;
             blg.TUpdate(b);
