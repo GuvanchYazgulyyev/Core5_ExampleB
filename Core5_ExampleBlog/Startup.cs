@@ -87,9 +87,15 @@ namespace Core5_ExampleBlog
 
             app.UseEndpoints(endpoints =>
             {
+                // Areas
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Blog}/{action=Index}/{id?}");
+                name: "areas",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                  );
+
+                endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Blog}/{action=Index}/{id?}");
             });
         }
     }

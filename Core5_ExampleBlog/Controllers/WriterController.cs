@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
 using Core5_ExampleBlog.Models;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace Core5_ExampleBlog.Controllers
 {
@@ -49,11 +51,14 @@ namespace Core5_ExampleBlog.Controllers
             return View();
         }
         // Writer Update
-        [AllowAnonymous]
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
-            var result = writer.TGetById(2);
+            Context context= new Context();
+            var mail = User.Identity.Name;
+            var Id = context.Writers.Where(k => k.WriterMail == mail)
+                .Select(l => l.WriterID).FirstOrDefault();
+            var result = writer.TGetById(Id);
             return View(result);
         }
         [AllowAnonymous]
@@ -80,7 +85,6 @@ namespace Core5_ExampleBlog.Controllers
         }
 
         // Writer Add
-        [AllowAnonymous]
         [HttpGet]
         public IActionResult WriterAdd()
         {
@@ -88,7 +92,6 @@ namespace Core5_ExampleBlog.Controllers
         }
 
 
-        [AllowAnonymous]
         [HttpPost]
         public IActionResult WriterAdd(AddProfileImage p)
         {
